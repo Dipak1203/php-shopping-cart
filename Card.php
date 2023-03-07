@@ -1,6 +1,7 @@
 <?php
 
-function Card($img,$name,$description,$price,$realPrice) {
+function Card($img, $name, $price)
+{
     $element = "
     <div class='col-md-3 col 6 my-3 md-0'>
     <div class='card shadow'>
@@ -16,9 +17,9 @@ function Card($img,$name,$description,$price,$realPrice) {
                 <i class='fas fa-star'></i>
                 <i class='fas fa-star-half'></i>
             </h6>
-            <p class='card-text'>$description</p>
+            <p class='card-text'>sleep night hearing protector earmuffs radio earmuffs active headphones for shooting electronic</p>
             <h5>
-                <small><s class='text-secondary'>$$realPrice</s></small>
+                <small><s class='text-secondary'>$423</s></small>
                 <span class='price'>$$price</span>
             </h5>
             <button type='submit' class='btn btn-warning my-3' name='add'>Add to Cart <i class='fas fa-shopping-cart'></i></button>

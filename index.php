@@ -1,6 +1,9 @@
 <?php 
 
-include './components/Card.php';
+include 'Card.php';
+include 'Database.php';
+
+$object = new Database();
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,11 +25,12 @@ include './components/Card.php';
     <div class="container">
         <div class="row text-center py-5">
            <?php 
-                Card("./components/images/1.jpg","Product1","Sony ZX Series Wired On-Ear Headphones, Black MDR-ZX110",400,3000);
-                Card("./components/images/2.jpg","Product3","Sony ZX Series Wired On-Ear Headphones, Black MDR-ZX110",400,3000);
-                Card("./components/images/3.jpg","Product4","Sony ZX Series Wired On-Ear Headphones, Black MDR-ZX110",400,3000);
-                Card("./components/images/3.jpg","Product5","Sony ZX Series Wired On-Ear Headphones, Black MDR-ZX110",400,3000);
-           ?>
+
+                $result = $object->getData();
+                while($row = mysqli_fetch_assoc($result)){
+                    Card($row['product_image'],$row['product_name'],$row['product_price']);
+                }
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
