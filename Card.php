@@ -1,9 +1,9 @@
 <?php
 
-function Card($img, $name, $price)
+function Card($img, $name, $price,$productID)
 {
     $element = "
-    <div class='col-md-3 col 6 my-3 md-0'>
+    <form class='col-md-3 col 6 my-3 md-0' method='post'>
     <div class='card shadow'>
         <div class='text-center'>
             <img src=\"$img\" alt='' class='img-fluid'>
@@ -23,9 +23,10 @@ function Card($img, $name, $price)
                 <span class='price'>$$price</span>
             </h5>
             <button type='submit' class='btn btn-warning my-3' name='add'>Add to Cart <i class='fas fa-shopping-cart'></i></button>
+            <input type='hidden' name='product_id' value='$productID' />
         </div>
     </div>
-</div>
+</form>
     ";
 
     echo $element;

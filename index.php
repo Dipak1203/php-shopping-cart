@@ -1,9 +1,39 @@
 <?php 
-
+session_start();
 include 'Card.php';
 include 'Database.php';
 
 $object = new Database();
+
+if(isset($_POST['add'])){
+    // print_r($_POST['product_id']);
+
+    if(isset($_SESSION['cart'])){
+        // print_r($_SESSION['cart']);
+        $item_arary_id = array_column($_SESSION['cart'],column_key:"product_id");
+        print_r($item_arary_id);
+
+        if(in_array($_POST['product_id'],$item_arary_id)){
+            echo "<script>alert('product is already added in the cart...!')</script>";
+            echo "<script>window.location = 'index.php'</script>";
+        }else{
+            $count = count($_SESSION['cart']);
+            $item_array =  array(
+                'product_id'=>$_POST['product_id']
+            );
+            $_SESSION['cart'][$count] = $item_array;
+            print_r($_SESSION['cart']);
+        }
+    }else{
+        $item_array = array(
+            'product_id' => $_POST['product_id']
+        );
+
+        // Create new session variable
+        $_SESSION['cart'][0] = $item_array;
+        print_r($_SESSION['cart']);
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +58,7 @@ $object = new Database();
 
                 $result = $object->getData();
                 while($row = mysqli_fetch_assoc($result)){
-                    Card($row['product_image'],$row['product_name'],$row['product_price']);
+                    Card($row['product_image'],$row['product_name'],$row['product_price'],$row['id']);
                 }
             ?>
         </div>
