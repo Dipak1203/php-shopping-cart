@@ -14,3 +14,8 @@ img{
 .fa-star,.fa-star-half{
     color:yellow;
 }
+
+#cart_count{
+    text-align: center;
+    padding: 10px;
+}
