@@ -11,7 +11,7 @@ if(isset($_POST['add'])){
     if(isset($_SESSION['cart'])){
         // print_r($_SESSION['cart']);
         $item_arary_id = array_column($_SESSION['cart'],column_key:"product_id");
-        print_r($item_arary_id);
+        // print_r($item_arary_id);
 
         if(in_array($_POST['product_id'],$item_arary_id)){
             echo "<script>alert('product is already added in the cart...!')</script>";
@@ -22,7 +22,7 @@ if(isset($_POST['add'])){
                 'product_id'=>$_POST['product_id']
             );
             $_SESSION['cart'][$count] = $item_array;
-            print_r($_SESSION['cart']);
+            // print_r($_SESSION['cart']);
         }
     }else{
         $item_array = array(
@@ -31,7 +31,7 @@ if(isset($_POST['add'])){
 
         // Create new session variable
         $_SESSION['cart'][0] = $item_array;
-        print_r($_SESSION['cart']);
+        // print_r($_SESSION['cart']);
     }
 }
 ?>
