@@ -19,3 +19,11 @@ img{
     text-align: center;
     padding: 10px;
 }
+
+
+.shopping_cart{
+    padding: 3% 0;
+}
+.price_details{
+    padding: 3% 2% !important;
+}
